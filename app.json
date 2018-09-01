@@ -1,0 +1,22 @@
+{
+  "pages":[
+    "pages/task/task",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "任务"
+    }, {
+      "pagePath": "pages/task/task",
+      "text": "个人"
+    }]
+  }
+}

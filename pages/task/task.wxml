@@ -1,0 +1,14 @@
+<!-- task.wxml -->
+<view class="container">
+
+<!-- 新建按钮 -->
+<!-- 右对齐 -->
+<van-row>
+  <van-col offset="18">
+    <van-button size="small" type="primary">新建任务</van-button>
+  </van-col>
+</van-row>
+
+</view>
+<!-- 下边框 -->
+<!-- <van-button type="primary" bindtap='showPicker'>+</van-button> -->

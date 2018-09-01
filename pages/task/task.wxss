@@ -1,0 +1,2 @@
+/**task.wxss**/
+@import "/dist/common/index.wxss";

@@ -1,2 +1,45 @@
 /**task.wxss**/
 @import "/dist/common/index.wxss";
+
+.btn {
+    width:20%;
+    align-self:center;
+    background-color:#FFCC00;
+    color:#FFF;
+    font-size:15px;
+  }
+  .btn::after {
+    border: 0;
+  }
+  .btn_hover {
+    background-color: pink;
+  }
+
+.card {
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    background-color:#F5F5F5;
+    box-shadow: 4px 1px 1px #cccccc;
+    margin: 8px;
+    position: relative;
+}
+.card-row{
+    display: flex;
+    padding: 10px 5px;
+    align-content: center;
+}
+.card-title{
+    color: #cccccc;
+    font-size: 16px;
+    align-self: center;
+    width: 64px;
+}
+.card-content{
+    font-size: 15px;
+    color: black;
+    align-self: center;
+}
+.card-button{
+    margin-right: 20px;
+    float: right;
+}

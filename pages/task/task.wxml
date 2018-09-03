@@ -3,15 +3,15 @@
   <!-- 新建任务按钮 -->
   <button class='btn' bindtap='newTask' hover-class='btn_hover' style="margin-top:15rpx;margin-right:7px;">新建</button>
   <!-- 卡片内容 -->
-  <view class="card">
+  <view class="card" wx:for="{{ list }}" wx:key="{{index}}">
     <view class="card-row">
       <view class="card-title">任务：</view>
-      <view class="card-content">花小时背四六级单词四六级单词</view>
+      <view class="card-content">{{item.title}}</view>
     </view>
     <view class="card-row">
       <view class="card-title">倒计时：</view>
-      <view class="card-content">5小时30分钟20秒</view>
-      <button class='btn' bindtap='sumbit' hover-class='btn_hover' style="width:90px;margin-right:7px;">提前完成</button>
+      <view class="card-content">{{item.hour}}小时{{item.min}}分钟{{item.sec}}秒</view>
+      <button class='btn' data-index="{{index}}" bindtap='complete' hover-class='btn_hover' style="width:90px;margin-right:7px;">提前完成</button>
     </view>
   </view>
   <!-- 弹出层 -->
@@ -20,20 +20,19 @@
     <view style="isShow">
       <picker-view indicator-style="height: 40px;" style="width: 100%; height: 150px;text-align:center" value="{{value}}" bindchange="bindChange">
         <picker-view-column>
-          <view wx:for="{{hours}}" style="line-height: 40px;isShow">{{item}}小时</view>
+          <view wx:for="{{hours}}" wx:key="*this" style="line-height: 40px;isShow">{{item}}小时</view>
         </picker-view-column>
         <picker-view-column>
-          <view wx:for="{{minutes}}" style="line-height: 40px;isShow">{{item}}分</view>
+          <view wx:for="{{minutes}}" wx:key="*this" style="line-height: 40px;isShow">{{item}}分</view>
         </picker-view-column>
         <picker-view-column>
-          <view wx:for="{{seconds}}" style="line-height: 40px;isShow">{{item}}秒</view>
+          <view wx:for="{{seconds}}" wx:key="*this" style="line-height: 40px;isShow">{{item}}秒</view>
         </picker-view-column>
       </picker-view>
     </view>
     <!-- 内容 -->
-    <van-field clearable class="van-hairline--surround" style="background-color:red" value="{{ content }}" placeholder="请输入任务内容" left-icon="records"  border="{{ true }}" bind:change="onInput" />
+    <van-field clearable class="van-hairline--surround" style="background-color:red" placeholder="请输入任务内容" left-icon="records"  border="{{ true }}" bind:change="onInput" />
     <!-- 开始计时 -->
-    <button class='btn' style="width:120px;margin-top:8px;margin-bottom:8px" bindtap='countDown' hover-class='btn_hover'>开始计时</button>
-
+    <button class='btn' style="width:120px;margin-top:8px;margin-bottom:8px" bindtap='startCountDown' hover-class='btn_hover'>开始计时</button>
   </van-popup>
 </view>

@@ -13,10 +13,15 @@
   "tabBar": {
     "list": [{
       "pagePath": "pages/index/index",
-      "text": "任务"
+      "text": "任务",
+      "iconPath":"res/task.png",
+      "selectedIconPath":"res/task.png"
+
     }, {
       "pagePath": "pages/task/task",
-      "text": "个人"
+      "text": "个人",
+      "iconPath":"res/personal.png",
+      "selectedIconPath":"res/personal.png"
     }]
   }
 }

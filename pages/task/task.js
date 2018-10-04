@@ -105,7 +105,7 @@ Page({
     })
     this.onClose();
     var that = this;
-    Countdown2(that,count);
+    nowTime(that, count);
   },
   onLoad: function () {
     // 获取用户任务列表
@@ -114,25 +114,29 @@ Page({
 });
 
 // test倒计时
-function Countdown(that,count) {
-  
-  var idx = that.data.list.length - 1;
-  if (count >= 0) {
-    var hour = Math.floor(count / 3600);
-    var min = Math.floor(count / 60) % 60;
-    var sec = count % 60;
+function nowTime(that, count) {
 
-    that.data.list[idx].hour = hour;
-    that.data.list[idx].min = min;
-    that.data.list[idx].sec = sec;
-    that.setData({ list: that.data.list });
-  }else{
-    clearTimeout(timer);
-    return;
+  var len = that.data.list.length
+  for (var idx = 0; idx < len; idx++) {
+    var count = that.data.list[idx].time
+    if (count > 0) {
+      var hour = Math.floor(count / 3600);
+      var min = Math.floor(count / 60) % 60;
+      var sec = count % 60;
+
+      that.data.list[idx].hour = hour;
+      that.data.list[idx].min = min;
+      that.data.list[idx].sec = sec;
+      that.data.list[idx].time--;
+      that.setData({ list: that.data.list });
+    } else {
+      clearTimeout(timer);
+    }
+    count--;
   }
-  count--;
-  timer = setTimeout(function(){
-    Countdown2(that,count)
+
+  timer = setTimeout(function () {
+    nowTime(that, count)
   }, 1000);
 };
 

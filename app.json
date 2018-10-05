@@ -1,8 +1,7 @@
 {
   "pages":[
     "pages/task/task",
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/personal/personal"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -12,13 +11,13 @@
   },
   "tabBar": {
     "list": [{
-      "pagePath": "pages/index/index",
+      "pagePath": "pages/task/task",
       "text": "任务",
       "iconPath":"res/task.png",
       "selectedIconPath":"res/task.png"
 
     }, {
-      "pagePath": "pages/task/task",
+      "pagePath": "pages/personal/personal",
       "text": "个人",
       "iconPath":"res/personal.png",
       "selectedIconPath":"res/personal.png"

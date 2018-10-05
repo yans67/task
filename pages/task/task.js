@@ -38,7 +38,7 @@ Page({
     indx: 0, // 选中下标
     value: [0, 0, 3],
     content: "", // 任务内容
-    list: [
+    todoList: [
       {
         time: 0,
         title: "任务1",
@@ -50,6 +50,24 @@ Page({
       {
         time: 1,
         title: "任务2",
+        hour: 0,
+        min: 0,
+        sec: 0,
+        timer: null
+      }
+    ],
+    doneList: [
+      {
+        time: 0,
+        title: "任务1",
+        hour: 0,
+        min: 0,
+        sec: 0,
+        timer: null
+      }, 
+      {
+        time: 0,
+        title: "任务1",
         hour: 0,
         min: 0,
         sec: 0,
@@ -76,13 +94,14 @@ Page({
   // 完成
   complete: function (event) {
     var idx = event.target.dataset.index;
-    this.setData({ indx: idx });
 
-    console.log("选中下标为：" + idx)
-    // clearTimeout(this.data.list[idx].timer);
-    clearTimeout(timer);
-
+    var item = this.data.todoList[idx];
+    this.data.doneList.push(item);
+    this.data.todoList.splice(idx, 1);
+    this.setData({ todoList: this.data.todoList });
+    this.setData({ doneList: this.data.doneList });
   },
+
   // 内容input
   onInput: function (e) {
     this.data.content = e.detail;
@@ -96,7 +115,7 @@ Page({
   // 倒计时
   startCountDown: function () {
     count = this.data.hour * 3600 + this.data.minute * 60 + this.data.second;
-    this.data.list.push({
+    this.data.todoList.push({
       time: count,
       title: this.data.content,
       hour: this.data.hour,
@@ -116,19 +135,19 @@ Page({
 // test倒计时
 function nowTime(that, count) {
 
-  var len = that.data.list.length
+  var len = that.data.todoList.length
   for (var idx = 0; idx < len; idx++) {
-    var count = that.data.list[idx].time
+    var count = that.data.todoList[idx].time
     if (count > 0) {
       var hour = Math.floor(count / 3600);
       var min = Math.floor(count / 60) % 60;
       var sec = count % 60;
 
-      that.data.list[idx].hour = hour;
-      that.data.list[idx].min = min;
-      that.data.list[idx].sec = sec;
-      that.data.list[idx].time--;
-      that.setData({ list: that.data.list });
+      that.data.todoList[idx].hour = hour;
+      that.data.todoList[idx].min = min;
+      that.data.todoList[idx].sec = sec;
+      that.data.todoList[idx].time--;
+      that.setData({ todoList: that.data.todoList });
     } else {
       clearTimeout(timer);
     }
